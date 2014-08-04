@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+p {
+  max-width: 60em;
+}
+p.section {
+    font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 0.1em solid black;
+}
+th, td {
+  border-style: solid;
+  border-width: 0.05em 0.1em;
+  border-color: black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  border-width: 0.1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 0.1em;
+}
+/* Widths of named columns */
+col.name {
+  width: 10em;
+}
+.action, .value, .arg {
+  width: 15em;
+}
+/* Properties for the name column 
+- td:first-child should work in CSS 2.1 avare browsers (tested in Firefox)
+- col.name is against specs but works in IE
+*/
+td:first-child, col.name {
+  background-color: rgb(240, 240, 240);
+  text-transform: capitalize;
+  letter-spacing: 0.1em;
+}
+/* required for IE */
+th {
+  font-style: normal;
+}
+  </style>
+  <title>Google Search Page</title></head>
+<body>
+<h1>Google Search Page</h1>
+<p class="section">Resource file mapping of an equivalent page object model/pattern class in code</p>
+<p>One could expand this to include nesting/layering/inheriting of page objects from a base object to more specific page objects, but this is just a simple example for now.</p>
+<p>Mapped from example at <a href="http://assertselenium.com/automation-design-practices/page-object-pattern/">http://assertselenium.com/automation-design-practices/page-object-pattern/</a></p>
+<table border="1">
+  <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup>
+  <thead>
+  <tr>
+    <th>Setting</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Documentation</td>
+      <td>Page Object as Resource File Example for Robot Framework</td>
+    </tr>
+    <tr>
+      <td>Library</td>
+      <td>Selenium2Library</td>
+    </tr>
+  </tbody>
+</table>
+<p class="section">Page locators, with location strategy identifier, as variables of the resource file "class"</p>
+<p>The page locators could be separated out in separate variable file(s), for those who prefer page object modeling where locators are kept separate from the page object methods. But best to have them together to represent the page object.</p>
+<table border="1">
+  <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup>
+  <thead>
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td>${PAGE_INITIALIZED} =<br></td><td>${false}</td>
+    </tr>
+    <tr>
+      <td>${SEARCH_FIELD} =<br></td><td>name=q</td>
+    </tr>
+    <tr>
+      <td>${SEARCH_BUTTON} =<br></td><td>name=btnG</td>
+    </tr>
+  </tbody>
+</table>
+<p class="section">Page object methods as user keywords of resource file "class"</p>
+<p>Since there is no "this" or "self" (I think?) referral of keywords or variables within resource file, we shall just append resource file name to local keyword methods in scope just for clarification in case of keyword name conflicts (even though presently not).</p>
+<table border="1">
+  <colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup>
+  <thead>
+  <tr>
+    <th>Keyword</th>
+    <th>Action</th>
+    <th>Argument</th>
+    <th>Argument</th>
+    <th>Argument</th>
+    <th>Argument</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Click On Search</td>
+      <td>[Documentation]</td>
+      <td>Click the search button to proceed with the search</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Selenium2Library.Click Button</td>
+      <td>${SEARCH_BUTTON}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>
+      <td>Close</td>
+      <td>[Documentation]</td>
+      <td>Close the browser window</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Selenium2Library.Close Browser</td>
+      <td># or is it Selenium2Library.Close Window?</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>
+      <td>Get Title</td>
+      <td>[Documentation]</td>
+      <td>Get the page title for Google search page</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>${result} =</td>
+      <td>Selenium2Library.Get Title</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>[Return]</td>
+      <td>${result}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>
+      <td>Open</td>
+      <td>[Documentation]</td>
+      <td>Open (or go to) the Google search page</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>[Arguments]</td>
+      <td>${url}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Run Keyword And Return If</td>
+      <td>${PAGE_INITIALIZED} == ${true}</td>
+      <td>Selenium2Library.Go To</td>
+      <td>${url}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Selenium2Library.Open Browser</td>
+      <td>${url}</td>
+      <td>${BROWSER}</td>
+      <td>#other optional args</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>${PAGE_INITIALIZED} = </td>
+      <td>Set Variable</td>
+      <td>${true}</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>
+      <td>Search For</td>
+      <td>[Documentation]</td>
+      <td>Perform a search on Google (enter search text, then click search)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>[Arguments]</td>
+      <td>${searchTerm}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>GoogleSearchPage.Type Search Term</td>
+      <td>${searchTerm}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td></td>
+      <td>Sleep</td>
+      <td>1 seconds</td>
+      <td>Arbitrary delay for page load and action to take effect correctly in automation</td>
+      <td></td>
+      <td></td>
+    </tr>
+     <tr>
+      <td></td>
+      <td>GoogleSearchPage.Click On Search</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr>
+      <td>Type Search Term</td>
+      <td>[Documentation]</td>
+      <td>Enter search term into Google search field. This doesn't click the search button as a follow up.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>[Arguments]</td>
+      <td>${searchTerm}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Selenium2Library.Input Text</td>
+      <td>${SEARCH_FIELD}</td>
+      <td>${searchTerm}</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+</body>
+</html>
