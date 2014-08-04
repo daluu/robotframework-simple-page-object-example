@@ -26,4 +26,9 @@ It is still recommended for one to go through the blog posts referenced above to
 
 I do hope that this example here will be useful to those not sure how to adapt page objects from code to resource files.
 
-*NOTE:* the files can be organized within folders, but I kept them all at root for simple example. e.g. separate folders for page objects and tests.
+*NOTES:* 
+
+* the files can be organized within folders, but I kept them all at root for simple example. e.g. separate folders for page objects and tests.
+* page objects are supposedly to return other page objects when navigating away to another page (object), though one doesn't have to follow the page object patterns 100%, which is a good thing. With the Robot Framework resource file and test library input/output design, where only simple data structures are used, it's likely not feasible to adopt returning "page objects/resources" from another one. Best to just have to know what page object resource files and their keywords to invoke when transitioning between page objects.
+
+
