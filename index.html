@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>RobotFramework Simple Page Object Example</title>
+<style>
+.note {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>RobotFramework Simple Page Object Example</h1>
+<p>A simple example of page objects implemented as resource file for Robot Framework, converted from a <a href="http://assertselenium.com/automation-design-practices/page-object-pattern/">Java test example</a></p>
+
+
+<p class="note">Prerequisites:</p>
+
+<ul>
+<li>some version of <a href="https://www.python.org/downloads/">Python</a> installed (2.x or 3.x)</li>
+<li>a version of RobotFramework (RF) installed</li>
+<li>a version of RF's Selenium2Library installed (<a href="https://github.com/robotframework/Selenium2Library">Python</a> or <a href="https://github.com/MarkusBernhardt/robotframework-selenium2library-java#readme">Java version</a> should technically not matter)</li>
+<li>go to <a href="http://www.robotframework.org">www.robotframework.org</a> for installation instructions</li>
+</ul>
+
+<p class="note">To run the example/test:</p>
+<ul>
+<li>get a copy of the files off the <a href="https://github.com/daluu/robotframework-simple-page-object-example">Github repo</a></li>
+<li>Run <span class="note">pybot PageObjectExampleTest.extension</span>, where extension is your desired file format to work with (.robot, .txt, .tsv, or .html). If using Java version, run with <span class="note">jybot</span> instead.</li>
+</ul>
+
+<p class="note">See how the RF simple page object example is implemented:</p>
+
+<p>You may go to the <a href="https://github.com/daluu/robotframework-simple-page-object-example">Github repo</a> to see the source code. Or alternatively, view the HTML version of the RF test/resource files from the links below.</p>
+
+<p>The page object example is structured as follows:</p>
+<ul>
+<li><a href="PageObjectExampleTest.html">PageObjectExampleTest</a> calls keywords from...
+	<ul>
+		<li><a href="GoogleSearchPage.html">GoogleSearchPage resource file</a>, which in turn calls keywords from...
+			<ul>
+				<li>Selenium2Library, <a href="http://robotframework.org/Selenium2Library/doc/Selenium2Library.html">Python version</a> or <a href="https://repo1.maven.org/maven2/com/github/markusbernhardt/robotframework-selenium2library-java/1.4.0.8/robotframework-selenium2library-java-1.4.0.8-libdoc.html">Java version</a></li>
+			</ul>
+		</li>
+	</ul>
+</li>
+<li>Both the test and page object resource file(s) call <a href="http://robotframework.org/robotframework/latest/libraries/BuiltIn.html">RobotFramework BuiltIn library</a> keywords</li>
+</ul>
+
+<p class="note">Reasons why I created this example:</p>
+
+<p>This may not be the best (simple) example, and there are other examples you should see like:</p>
+
+<p><a href="http://www.beer30.org/2012/05/26/using-the-page-object-pattern-with-robot-framework/">http://www.beer30.org/2012/05/26/using-the-page-object-pattern-with-robot-framework/</a></p>
+
+<p><a href="https://blog.codecentric.de/en/2010/07/how-to-structure-a-scalable-and-maintainable-acceptance-test-suite/">https://blog.codecentric.de/en/2010/07/how-to-structure-a-scalable-and-maintainable-acceptance-test-suite/</a></p>
+
+<p>but I wanted to offer:</p>
+
+<p>an example with the code/files available to run "as is" after grabbing them from the repo, and more importantly...</p>
+
+<p>an example that highlights good page object design practices - normally done in code but adapted as resource file(s) for robot framework, e.g.:</p>
+<ul>
+<li>locators defined separately as members (variables/properties) of page object, not embedded within the methods that use them</li>
+<li>page objects don't perform assertions/verifications, but may throw exception/failure if in wrong state (no example of throwing failure yet)</li>
+<li>tests do all the assertions &amp; verifications</li>
+<li>we specifically call out what test library (i.e. Selenium2Library) and page object (i.e. resource file) methods (i.e. keywords) we invoke for clarity (though more text/typing) just like we do in code for things like <span class="note">driver.findElement(By.id("some ID")).click()</span>, in Java, called by a page object method, etc. to provide a (re)semblance to object-oriented programming often used with page objects in code</li>
+<li>an example showing code/keyword reuse within a page object</li>
+</ul>
+
+<p>It is still recommended for one to go through the blog posts referenced above to get visual diagrams, more details, and examples of perhaps more complex implementations with multiple page objects.</p>
+
+<p>I do hope that this example here will be useful to those not sure how to adapt page objects from code to resource files.</p>
+
+<p class="note">NOTES:</p>
+
+<ul>
+<li>the files can be organized within folders for a hierarchical structure, but I kept them all in one place for simplicity. e.g. separate folders for page objects and tests, and perhaps separate folders for different page objects and different tests.</li>
+<li>page objects are supposedly to return other page objects when navigating away to another page (object), though one doesn't have to follow the page object patterns 100%, which is a good thing. With the Robot Framework resource file and test library input/output design, where only simple data structures are used, it's likely not feasible to adopt returning "page objects/resources" from another one. Best to just have to know what page object resource files and their keywords to invoke when transitioning between page objects.</li>
+</ul>
+</body>
+</html>
