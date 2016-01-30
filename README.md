@@ -1,7 +1,7 @@
 robotframework-simple-page-object-example
 =========================================
 
-A simple example of page objects implemented as resource file for Robot Framework, converted from a Java test example (http://assertselenium.com/automation-design-practices/page-object-pattern/).
+A simple example of page objects implemented as resource file for Robot Framework, converted from a [Java test example] (http://assertselenium.com/automation-design-practices/page-object-pattern/).
 
 **Prerequisites:**
 
@@ -10,7 +10,16 @@ A simple example of page objects implemented as resource file for Robot Framewor
 * a version of RF's Selenium2Library installed (Python or Java version should technically not matter)
 * go to www.robotframework.org for installation instructions
 
-**To run the test:** after getting a copy of the files off this Github repo, simply run like `pybot PageObjectExampleTest.extension`, where extension is your desired file format to work with (.robot, .txt, .tsv, or .html).
+**To run the test:** after getting a copy of the files off this Github repo, simply run like `pybot PageObjectExampleTest.extension`, where extension is your desired file format to work with (.robot, .txt, .tsv, or .html). If using Java version, run with `jybot` instead.
+
+**The page object example is structured as follows:**
+
+* PageObjectExampleTest calls keywords from...
+ * GoogleSearchPage resource file, which in turn calls keywords from...
+   * Selenium2Library, Python version or Java version
+* Both the test and page object resource file(s) call RobotFramework BuiltIn library keywords
+
+**Reasons why I created this example:**
 
 This may not be the best (simple) example, and there are other examples you should see like:
 
