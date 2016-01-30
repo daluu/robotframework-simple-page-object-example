@@ -1,152 +1,153 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head>
-  <style type="text/css">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
 html {
   font-family: Arial,Helvetica,sans-serif;
   background-color: white;
   color: black;
 }
-p {
-  max-width: 60em;
-}
 table {
   border-collapse: collapse;
   empty-cells: show;
   margin: 1em 0em;
-  border: 0.1em solid black;
+  border: 1px solid black;
 }
 th, td {
-  border-style: solid;
-  border-width: 0.05em 0.1em;
-  border-color: black;
+  border: 1px solid black;
   padding: 0.1em 0.2em;
   height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
 }
 th {
   background-color: rgb(192, 192, 192);
   color: black;
-  border-width: 0.1em;
+  height: 1.7em;
   font-weight: bold;
   text-align: center;
-  text-transform: capitalize;
   letter-spacing: 0.1em;
 }
-/* Widths of named columns */
-col.name {
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
   width: 10em;
 }
-.action, .value, .arg {
-  width: 15em;
-}
-/* Properties for the name column 
-- td:first-child should work in CSS 2.1 avare browsers (tested in Firefox)
-- col.name is against specs but works in IE
-*/
-td:first-child, col.name {
-  background-color: rgb(240, 240, 240);
-  text-transform: capitalize;
-  letter-spacing: 0.1em;
-}
-/* required for IE */
-th {
-  font-style: normal;
-}
-  </style>
-  <title>Robot Framework Example Test for Selenium Page Objects</title></head>
+</style>
+<title>PageObjectExampleTest</title>
+</head>
 <body>
-<h1>Robot Framework Example Test for Selenium Page Objects</h1>
+<h1>PageObjectExampleTest - using resource files for page objects</h1>
 <p>Mapped from (non-Robot Framework) page object example at <a href="http://assertselenium.com/automation-design-practices/page-object-pattern/">http://assertselenium.com/automation-design-practices/page-object-pattern/</a></p>
-<table border="1">
-  <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup>
-  <thead>
-  <tr>
-    <th>Setting</th>
-    <th>Value</th>
-    <th>Value</th>
-    <th>Value</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Resource</td>
-      <td>GoogleSearchPage.html</td>
-      <td></td>
-      <td></td>
-    </tr>
-     <tr>
-      <td>Test Setup</td>
-      <td>GoogleSearchPage.Open</td>
-      <td>${URL}</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Test Teardown</td>
-      <td>GoogleSearchPage.Close</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Setting</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>GoogleSearchPage.Open</td>
+<td>${URL}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Teardown</td>
+<td>GoogleSearchPage.Close</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>GoogleSearchPage.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </table>
-<table border="1">
-  <colgroup span="99"><col class="name"><col class="value" span="4"></colgroup>
-  <thead>
-  <tr>
-    <th>Variable</th>
-    <th>Value</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>${BROWSER_OPENED} =<br></td><td>${false}</td>
-    </tr>
-    <tr>
-      <td>${BROWSER} =<br></td><td>firefox</td>
-    </tr>
-    <tr>
-      <td>${URL} =<br></td><td>http://www.google.com</td>
-    </tr>
-    <tr>
-      <td>${SEARCH_TERM} =<br></td><td>selenium</td>
-    </tr>  
-  </tbody>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variable</th>
+</tr>
+<tr>
+<td class="name">${BROWSER_OPENED}</td>
+<td>${false}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${BROWSER}</td>
+<td>firefox</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${URL}</td>
+<td><a href="http://www.google.com">http://www.google.com</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SEARCH_TERM}</td>
+<td>selenium</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </table>
-<table border="1">
-  <colgroup span="99"><col class="name"><col class="action"><col class="arg" span="3"></colgroup>
-  <thead>
-  <tr>
-    <th>Test Case</th>
-    <th>Action</th>
-    <th>Argument</th>
-    <th>Argument</th>
-    <th>Argument</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>When The User Searches For Selenium The Results Page Title Should Contain Selenium</td>
-      <td>GoogleSearchPage.Search For</td>
-      <td>${SEARCH_TERM}</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>${result} =</td>
-      <td>GoogleSearchPage.Get Title</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Should Contain</td>
-      <td>${result}</td>
-      <td>${SEARCH_TERM}</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td><td></td><td></td><td></td><td></td>
-    </tr>
-  </tbody>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Case</th>
+</tr>
+<tr>
+<td class="name"><a name="test_When The User Searches For Selenium The Results Page Title Should Contain Selenium">When The User Searches For Selenium The Results Page Title Should Contain Selenium</a></td>
+<td>GoogleSearchPage.Search For</td>
+<td>${SEARCH_TERM}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>GoogleSearchPage.Get Title</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${result}</td>
+<td>${SEARCH_TERM}</td>
+<td></td>
+</tr>
 </table>
 </body>
 </html>
