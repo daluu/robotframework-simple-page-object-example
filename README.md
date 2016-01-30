@@ -19,6 +19,8 @@ A simple example of page objects implemented as resource file for Robot Framewor
    * Selenium2Library, Python version or Java version
 * Both the test and page object resource file(s) call RobotFramework BuiltIn library keywords
 
+**NOTE:** for better viewing of the HTML format of the test files, go to the [Github.io page](http://daluu.github.io/robotframework-simple-page-object-example/). For the other formats, you can just directly view in this repo.
+
 **Reasons why I created this example:**
 
 This may not be the best (simple) example, and there are other examples you should see like:
